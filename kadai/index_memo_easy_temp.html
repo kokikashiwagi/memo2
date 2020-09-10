@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>myMemoPad</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body>
+<header>
+    <h1>    
+        <img src="img/7pin.png" width="50px" alt="">
+        麻雀点数集計    
+        <img src="img/7pin.png" width="50px" alt="">
+    </h1>
+</header>
+
+<table id="junbi">
+    <tr>
+      <th>項目</th>
+      <th>条件</th>
+    </tr>
+    <tr>
+        <td>ウマ1</td>
+        <td>
+            <input type="tel" id="uma1" placeholder="10" >
+        </td>
+    </tr>
+    <tr>
+        <td>ウマ2</td>
+        <td>
+            <input type="tel" id="uma2"  placeholder="20">
+        </td>
+      </tr>
+    <tr>
+        <td>トビ</td>
+        <td>
+            <input type="tel" id="tobi"  placeholder="10">
+        </td>
+    </tr>
+    <tr>
+        <td>ヤキトリ</td>
+        <td>
+            <input type="tel" id="yakitori"  placeholder="10">
+        </td>
+    </tr>
+    <tr>
+        <td>オカ</td>
+        <td>
+            <input type="tel" id="oka" placeholder="30000">
+        </td>
+    </tr>
+    <tr>
+        <td>原点</td>
+        <td>
+            <input type="tel" id="genten"  placeholder="25000">
+        </td>
+    </tr>
+    <tr>
+    </tr>
+    </table>
+    <ul>
+        <li id="save_condition">設定完了</li>
+        <li id="clear_condition">設定消去</li>
+        <li id="change_condition">設定変更</li>
+    </ul>
+
+<main>
+
+<table id="zaseki">
+    <tr>
+      <!-- <th class="playing">順位</th> -->
+      <th class="playing" >プレイヤー</th>
+      <th class="playing">点数</th>
+      <th class="playing">順位(自動判定)</th>
+      <th class="playing">焼き鳥</th>
+    </tr>
+    <tr>
+        <!-- <td>１位</td> -->
+        <td>
+            <!-- Aさん -->
+            <input type="text" id="Asan" value="Aさん">
+            <!-- <select id=player_1> -->
+                <!-- <option value= "1">Aさん</option>
+                <option value= "2">Bさん</option>
+                <option value= "3">Cさん</option>
+                <option value= "4">Dさん</option> -->
+            <!-- </select> -->
+        <td>
+            <input type="number" id="jibun" step="100" value="0">
+        </td>
+        <td>
+            <select id=player_1>
+                <option value= "1">１位</option>
+                <option value= "2">２位</option>
+                <option value= "3">３位</option>
+                <option value= "4">４位</option>
+            </select>
+        </td>
+        <td>
+            <select id=tori1>
+                <option value= "0">回避</option>
+                <option value= "1">和了れず</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <!-- <td>２位</td> -->
+        <td>
+            <input type="text" id="Bsan" value="Bさん">
+            <!-- <select id=player_2>
+                <option value= "2">Bさん</option>
+                <option value= "1">Aさん</option>
+                <option value= "3">Cさん</option>
+                <option value= "4">Dさん</option>
+            </select> -->
+        </td>
+        <td>
+            <input type="number" id="shimocha" step="100" value="20000">
+        </td>
+        <td>
+            <select id=player_2>
+                <option value= "1">１位</option>
+                <option value= "2">２位</option>
+                <option value= "3">３位</option>
+                <option value= "4">４位</option>
+            </select>
+        </td>
+        <td>
+            <select id=tori2>
+                <option value= "0">回避</option>
+                <option value= "1">和了れず</option>
+            </select>
+        </td>
+      </tr>
+    <tr>
+        <!-- <td>３位</td> -->
+        <td>
+            <input type="text" id="Csan" value="Cさん">
+            <!-- <select id=player_3>
+                <option value= "3">Cさん</option>
+                <option value= "1">Aさん</option>
+                <option value= "2">Bさん</option>
+                <option value= "4">Dさん</option>
+            </select> -->
+        </td>
+        <td>
+            <input type="number" id="toimen" step="100" value="">
+        </td>
+        <td>
+            <select id=player_3>
+                <option value= "1">１位</option>
+                <option value= "2">２位</option>
+                <option value= "3">３位</option>
+                <option value= "4">４位</option>
+            </select>
+        </td>
+        <td>
+            <select id=tori3>
+                <option value= "0">回避</option>
+                <option value= "1">和了れず</option>
+            </select>
+
+        </td>
+   </tr>
+    <tr>
+        <!-- <td>４位</td> -->
+        <td>
+            <input type="text" id="Dsan" value="Dさん">
+            <!-- <select id=player_4>
+                <option value= "4">Dさん</option>
+                <option value= "1">Aさん</option>
+                <option value= "2">Bさん</option>
+                <option value= "3">Cさん</option>
+            </select> -->
+        </td>
+        <td>
+            <input type="number" id="kamicha" step="100" value="30000">
+        </td>
+        <td>
+            <select id=player_4>
+                <option value= "1">１位</option>
+                <option value= "2">２位</option>
+                <option value= "3">３位</option>
+                <option value= "4">４位</option>
+            </select>
+        </td>
+        <td>
+            <select id=tori4>
+                <option value= "0">回避</option>
+                <option value= "1">和了れず</option>
+            </select>
+
+        </td>
+    </tr>
+    </table>
+
+    <ul id="button1">
+        <li id="calc">順位算出</li>
+        <li id="save">登録</li>
+        <!-- <li id="clear_one">１つ消去</li> -->
+        <li id="clear_last">１つ消去</li>
+        <li id="clear_all">全部消去</li>
+    </ul>
+
+</main>
+
+
+
+<table id="list">
+    <tr>
+        <td>プレイヤー</td>
+        <td id="list_Asan">Aさん</td>
+        <td id="list_Bsan">Bさん</td>
+        <td id="list_Csan">Cさん</td>
+        <td id="list_Dsan">Dさん</td>
+    </tr>
+<!-- ここに追加データが挿入される -->
+</table>
+
+<table id="list_total">
+    <tr>
+        <td>プレイヤー</td>
+        <td id="list_Asan">Aさん</td>
+        <td id="list_Bsan">Bさん</td>
+        <td id="list_Csan">Cさん</td>
+        <td id="list_Dsan">Dさん</td>
+    </tr>
+   <tr>
+        <td>合計</td>
+        <td id="total_j">0</td>
+        <td id="total_s">0</td>
+        <td id="total_t">0</td>
+        <td id="total_k">0</td>
+    </tr>
+</table>
+
+
+<!-- JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート-->
+<!-- JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート-->
+<!-- JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート JSスタート-->
+<script>
+
+//最初非表示
+$("#change_condition").hide();
+$("#zaseki").hide();
+$("#button1").hide();
+$("#list").hide();
+$("#list_total").hide();
+
+//点数を入れるアレイ
+let point_1 = [];
+let point_2 = [];
+let point_3 = [];
+let point_4 = [];
+
+//１位の入力枠の色
+// $("#jibun").css("background-color","#cccccc");
+
+//回数をカウントする
+let num =0;
+
+//アレイの中身足す変数sum
+let s1 = 0;
+let s2 = 0;
+let s3 = 0;
+let s4 = 0;
+
+let tobi_input = $("#tobi").val();
+let yakitori_input = $("#yakitori").val();
+let uma1_input = $("#uma1").val();
+let uma2_input = $("#uma2").val();
+let oka_input = $("#oka").val();
+let genten_input = $("#genten").val();
+
+tobi_input = localStorage.getItem("tobi_input");
+yakitori_input = localStorage.getItem("yakitori_input");
+uma1_input = localStorage.getItem("uma1_input");
+uma2_input = localStorage.getItem("uma2_input");
+oka_input = localStorage.getItem("oka_input");
+genten_input = localStorage.getItem("genten_input");
+
+$("#tobi").val(tobi_input);
+$("#yakitori").val(yakitori_input);
+$("#uma1").val(uma1_input);
+$("#uma2").val(uma2_input);
+$("#oka").val(oka_input);
+$("#genten").val(genten_input);
+
+
+//条件設定ボタン クリック
+//条件設定ボタン クリック
+$("#save_condition").on("click",function(){
+    tobi_input = $("#tobi").val();
+    yakitori_input = $("#yakitori").val();
+    uma1_input = $("#uma1").val();
+    uma2_input = $("#uma2").val();
+    oka_input = $("#oka").val();
+    genten_input = $("#genten").val();
+
+    if(uma1_input==""){
+        alert("ウマ１を入力してください")
+        return
+    }
+    else if(uma2_input==""){
+        alert("ウマ２を入力してください")
+        return
+    }
+    else if(tobi_input==""){
+        alert("トビを入力してください")
+        return
+    }
+    else if(yakitori_input==""){
+        alert("ヤキトリを入力してください")
+        return
+    }
+    else if(oka_input==""){
+        alert("オカを入力してください")
+        return
+    }
+    else if(genten_input==""){
+        alert("原点を入力してください")
+        return
+    }
+    //ウマチェック
+    //ウマチェック
+    let check_uma = uma2_input-uma1_input;
+    if(check_uma < 0){
+        alert("ウマ1はウマ2以下にしてください!");
+        return;
+    }
+
+    if(uma2_input < 0){
+        alert("ウマ1は0以上にしてください!");
+        return;
+    }
+
+    if(uma1_input < 0){
+        alert("ウマ1は0以上にしてください!");
+        return;
+    }
+
+    if(tobi_input < 0){
+        alert("トビは0以上にしてください!");
+        return;
+    }
+
+    if(yakitori_input < 0){
+        alert("トリは0以上にしてください!");
+        return;
+    }
+
+    if(oka_input < 0){
+        alert("オカは0以上にしてください!");
+        return;
+    }
+
+
+    if(genten_input < 0){
+        alert("原点は0以上にしてください!");
+        return;
+    }
+
+    if(oka_input%100 != 0){
+        alert("オカは100単位で入れてください");
+        return
+    }
+
+    if(genten_input%100 != 0){
+        alert("原点は100単位で入れてください");
+        return
+    }
+
+    //オカと原点チェック
+    //オカと原点チェック
+    let check_okagen = oka_input-genten_input;
+    if(check_okagen < 0){
+        alert("オカは原点以上にしてください!");
+        return;
+    }
+
+
+    localStorage.setItem("tobi_input",tobi_input);
+    localStorage.setItem("yakitori_input",yakitori_input);
+    localStorage.setItem("uma1_input",uma1_input);
+    localStorage.setItem("uma2_input",uma2_input);
+    localStorage.setItem("oka_input",oka_input);
+    localStorage.setItem("genten_input",genten_input);
+    $("#change_condition").show();    
+    $("#zaseki").show();
+    $("#button1").show();
+    $("#list").show();
+    $("#list_total").show();
+
+    $("#save_condition").hide();
+    $("#clear_condition").hide();
+    $("#junbi").hide();
+});
+
+//条件変更ボタン クリック
+//条件変更ボタン クリック
+$("#change_condition").on("click",function(){
+
+    $("#save_condition").show();
+    $("#clear_condition").show();
+    $("#junbi").show();
+    $("#list_total").show();
+
+    $("#zaseki").hide();
+    $("#button1").hide();
+    $("#list").hide();
+    $("#list_total").hide();
+    $("#change_condition").hide();
+    
+});
+
+$("#clear_condition").on("click",function(){
+    localStorage.clear();
+    location.reload();
+});
+
+//順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン
+//順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン順位計算ボタン
+$("#calc").on("click",function(){
+    localStorage.getItem("genten_input",genten_input);
+    let genten =eval(genten_input);
+
+    const player1_flag = $("#player_1").val();
+    const player2_flag = $("#player_2").val();
+    const player3_flag = $("#player_3").val();
+    const player4_flag = $("#player_4").val();
+
+    //初期設定の値を計算用に変更
+    // let player_1 =eval(player1_flag);
+    // let player_2 =eval(player2_flag);
+    // let player_3 =eval(player3_flag);
+    // let player_4 =eval(player4_flag);
+   
+    //入力されてる点数を定義
+    const jibun = $("#jibun").val();
+    const shimocha = $("#shimocha").val();
+    const toimen = $("#toimen").val();
+    const kamicha = $("#kamicha").val();
+
+    //入力された点数を計算用に変更
+    let p1=eval(jibun);
+    let p2=eval(shimocha);
+    let p3=eval(toimen);
+    let p4=eval(kamicha);
+    let total_check_every = p1 + p2 + p3 + p4;
+
+    let null_check=0;
+    //トータルチェック用
+    //１位を自動計算
+    //１位を自動計算
+    if(p1==null){
+        p1 = 4*genten-p2-p3-p4;
+        $("#jibun").val(p1);
+        null_check = null_check+1        
+    }
+    if(p2==null){
+        p2 = 4*genten-p1-p3-p4;
+        $("#shimocha").val(p2);
+        null_check = null_check+1        
+    }
+    if(p3==null){
+        p3 = 4*genten-p1-p2-p4;
+        $("#toimen").val(p3);
+        null_check = null_check+1        
+    }
+    if(p4==null){
+        p4 = 4*genten-p1-p2-p3;
+        $("#kamicha").val(p4);
+        null_check = null_check+1        
+    }
+    if(null_check>1){
+        alert("三人以上点数を入力してください");
+        return
+    }
+
+    let rank_kimeru =[p1,p2,p3,p4];
+    rank_kimeru.sort(function(a,b){
+        if( a > b ) return -1;
+        if( a < b ) return 1;
+        return 0;
+    });
+   
+
+    for(let i=0; i<=3; i++ ){
+            if(p1==rank_kimeru[i]){            
+            $("#player_1").val(i+1);
+            player_1=i+1;
+            }
+    }
+    for(let i=0; i<=3; i++ ){
+            if(p2==rank_kimeru[i]){            
+            $("#player_2").val(i+1);
+            player_2=i+1;
+            }
+    }
+    for(let i=0; i<=3; i++ ){
+            if(p3==rank_kimeru[i]){            
+            $("#player_3").val(i+1);
+            player_3=i+1;
+            }
+    }
+    for(let i=0; i<=3; i++ ){
+            if(p4==rank_kimeru[i]){            
+            $("#player_4").val(i+1);
+            player_4=i+1;
+            }
+    }
+
+    if(p1%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p2%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p3%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p4%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+
+    //四人の合計点数チェック
+    //四人の合計点数チェック
+    let check_sum = p1+p2+p3+p4;
+    let check_sum2 = 4*genten;
+    // console.log(check_sum,check_sum2);
+    
+    if(check_sum!=check_sum2){
+        // console.log(check_sum,check_sum2);
+        alert("四人の合計点数が"+(check_sum2.toLocaleString())+"になるようにしてください!");
+        return;
+    }
+
+    if(p1==p2){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(p1==p3){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(p1==p4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(p2==p3){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(p2==p4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(p3==p4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+
+    
+});
+
+//登録ボタン登録ボタン登録ボタン登録ボタン
+//登録ボタン登録ボタン登録ボタン登録ボタン
+//登録ボタン登録ボタン登録ボタン登録ボタン
+$("#save").on("click",function(){
+    localStorage.getItem("tobi_input",tobi_input);
+    localStorage.getItem("yakitori_input",yakitori_input);
+    localStorage.getItem("uma1_input",uma1_input);
+    localStorage.getItem("uma2_input",uma2_input);
+    localStorage.getItem("oka_input",oka_input);
+    localStorage.getItem("genten_input",genten_input);
+
+    const tori1_flag = $("#tori1").val();
+    const tori2_flag = $("#tori2").val();
+    const tori3_flag = $("#tori3").val();
+    const tori4_flag = $("#tori4").val();
+
+    const player1_flag = $("#player_1").val();
+    const player2_flag = $("#player_2").val();
+    const player3_flag = $("#player_3").val();
+    const player4_flag = $("#player_4").val();
+
+    const name_a = $("#Asan").val();
+    const name_b = $("#Bsan").val();
+    const name_c = $("#Csan").val();
+    const name_d = $("#Dsan").val();
+
+    //名前変更
+    //名前変更
+    $("#list_Asan").html(name_a);
+    $("#list_Bsan").html(name_b);
+    $("#list_Csan").html(name_c);
+    $("#list_Dsan").html(name_d);
+
+
+    //初期設定の値を計算用に変更
+    let tobi =eval(tobi_input);
+    let yakitori =eval(yakitori_input);
+    let uma1 =eval(uma1_input);
+    let uma2 =eval(uma2_input);
+    let oka =eval(oka_input);
+    let genten =eval(genten_input);
+
+    let tori1 =eval(tori1_flag);
+    let tori2 =eval(tori2_flag);
+    let tori3 =eval(tori3_flag);
+    let tori4 =eval(tori4_flag);
+
+    let player_1 =eval(player1_flag);
+    let player_2 =eval(player2_flag);
+    let player_3 =eval(player3_flag);
+    let player_4 =eval(player4_flag);
+
+   
+    //入力されてる点数を定義
+    const jibun = $("#jibun").val();
+    const shimocha = $("#shimocha").val();
+    const toimen = $("#toimen").val();
+    const kamicha = $("#kamicha").val();
+
+    // console.log(jibun,shimocha,toimen,kamicha);
+    if(jibun == ""){
+        alert("点数を入力してください1");
+        return
+    }
+    if(shimocha == ""){
+        alert("点数を入力してください2");
+        return
+    }
+    if(toimen == ""){
+        alert("点数を入力してください3");
+        return
+    }
+    if(kamicha == ""){
+        alert("点数を入力してください4");
+        return
+    }
+
+
+    //入力された点数を計算用に変更
+    let p1=eval(jibun);
+    let p2=eval(shimocha);
+    let p3=eval(toimen);
+    let p4=eval(kamicha);
+    let total_check_every = p1 + p2 + p3 + p4;
+    // let null_check=0;
+
+    //トータルチェック用
+    // console.log(p1,p2,p3,p4);
+    if(p1 == null){
+        alert("点数を入力してください5");
+        return
+    }
+    if(p2 == null){
+        alert("点数を入力してください6");
+        return
+    }
+    if(p3 == null){
+        alert("点数を入力してくださ7");
+        return
+    }
+    if(p4 == null){
+        alert("点数を入力してください8");
+        return
+    }
+
+    //１位を自動計算
+    //１位を自動計算
+    // if(p1==null){
+    //     p1 = 4*genten-p2-p3-p4;
+    //     $("#jibun").val(p1);
+    //     null_check = null_check+1        
+    // }
+    // if(p2==null){
+    //     p2 = 4*genten-p1-p3-p4;
+    //     $("#shimocha").val(p2);
+    //     null_check = null_check+1        
+    // }
+    // if(p3==null){
+    //     p3 = 4*genten-p1-p2-p4;
+    //     $("#toimen").val(p3);
+    //     null_check = null_check+1        
+    // }
+    // if(p4==null){
+    //     p4 = 4*genten-p1-p2-p3;
+    //     $("#kamicha").val(p4);
+    //     null_check = null_check+1        
+    // }
+    // if(null_check>1){
+    //     alert("三人以上点数を入力してください");
+    //     return
+
+    // }
+
+    // let rank_kimeru =[p1,p2,p3,p4];
+    // rank_kimeru.sort(function(a,b){
+    //     if( a > b ) return -1;
+    //     if( a < b ) return 1;
+    //     return 0;
+    // });
+   
+
+    // for(let i=0; i<=3; i++ ){
+    //         if(p1==rank_kimeru[i]){            
+    //         $("#player_1").val(i+1);
+    //         player_1=i+1;
+    //         }
+    // }
+    // for(let i=0; i<=3; i++ ){
+    //         if(p2==rank_kimeru[i]){            
+    //         $("#player_2").val(i+1);
+    //         player_2=i+1;
+    //         }
+    // }
+    // for(let i=0; i<=3; i++ ){
+    //         if(p3==rank_kimeru[i]){            
+    //         $("#player_3").val(i+1);
+    //         player_3=i+1;
+    //         }
+    // }
+    // for(let i=0; i<=3; i++ ){
+    //         if(p4==rank_kimeru[i]){            
+    //         $("#player_4").val(i+1);
+    //         player_4=i+1;
+    //         }
+    // }
+
+    //点数が100単位になってるかチェック
+    //点数が100単位になってるかチェック
+
+
+    if(p1%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p2%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p3%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+    if(p4%100 != 0){
+        alert("点数は100単位で入れてください");
+        return
+    }
+
+    //順位かぶりチェック
+    //順位かぶりチェック    
+    // console.log(player_1,player_2,player_3,player_4);
+    if(player_1==player_2){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(player_1==player_3){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(player_1==player_4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(player_2==player_3){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(player_2==player_4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+    if(player_3==player_4){
+        alert("同じ点数のところは順位を決めてください");
+        return
+    }
+
+
+    //四人の合計点数チェック
+    //四人の合計点数チェック
+    let check_sum = p1+p2+p3+p4;
+    
+    let check_sum2 = 4*genten;
+    // console.log(check_sum);
+    // console.log(check_sum2);
+    if(check_sum!=check_sum2){
+        alert("四人の合計点数が"+(check_sum2.toLocaleString())+"になるようにしてください!");
+        return;
+    }
+    
+    // ここの実装あとでやる、順位順に
+    // ここの実装あとでやる、順位順に
+
+    // １と２
+    if(player_1>player_2 && p1>p2){
+        alert("AさんとBさんの順位が違います！")
+        return
+    }
+    else if(player_2>player_1 && p2>p1){
+        alert("AさんとBさんの順位が違います！")
+        return
+    }
+    // 1と3
+    else if(player_1>player_3 && p1>p3){
+        alert("AさんとCさんの順位が違います！")
+        return
+    }
+    else if(player_3>player_1 && p3>p1){
+        alert("AさんとCさんの順位が違います！")
+        return
+    }
+    // 1と4
+    else if(player_1>player_4 && p1>p4){
+        alert("AさんとDさんの順位が違います！")
+        return
+    }
+    else if(player_4>player_1 && p4>p1){
+        alert("AさんとDさんの順位が違います！")
+        return
+    }
+
+    // 2と3
+    else if(player_2>player_3 && p2>p3){
+        alert("BさんとCさんの順位が違います！")
+        return
+    }
+    else if(player_3>player_2 && p3>p2){
+        alert("BさんとCさんの順位が違います！")
+        return
+    }    
+    // 2と4
+    else if(player_2>player_4 && p2>p4){
+        alert("AさんとCさんの順位が違います！")
+        return
+    }
+    else if(player_4>player_2 && p4>p2){
+        alert("AさんとDさんの順位が違います！")
+        return
+    }
+
+    // 3と4
+    else if(player_3>player_4 && p3>p4){
+        alert("CさんとDさんの順位が違います！")
+        return
+    }
+    else if(player_4>player_3 && p4>p3){
+        alert("CさんとDさんの順位が違います！")
+        return
+    }
+    // console.log(p1,p2,player_1,player_2);
+
+    //エラーチェック完了 エラーチェック完了 エラーチェック完了 エラーチェック完了 
+    //エラーチェック完了 エラーチェック完了 エラーチェック完了 エラーチェック完了 
+
+    //半荘数を増やす
+    //半荘数を増やす
+    num = num +1;
+    // console.log(p1,p2,p3,p4);
+    console.log(num,"はじめ");
+
+    total_check_every = p1 + p2 + p3 + p4;
+    // console.log("合計は0か "+total_check_every);
+
+    //オカ計算
+    if(player_1==1){
+    p1 = p1-oka+(oka-genten)*4; //トップ取り
+    }
+    else{
+    p1 = p1-oka;
+    }
+
+    if(player_2==1){
+    p2 = p2-oka+(oka-genten)*4; //トップ取り
+    }
+    else{
+    p2 = p2-oka;
+    }
+
+    if(player_3==1){
+    p3 = p3-oka+(oka-genten)*4; //トップ取り
+    }
+    else{
+    p3 = p3-oka;
+    }
+
+    if(player_4==1){
+    p4 = p4-oka+(oka-genten)*4; //トップ取り
+    }
+    else{
+    p4 = p4-oka;
+    }
+
+    total_check_every = p1 + p2 + p3 + p4;
+    // console.log("合計は0か "+total_check_every);
+
+
+    //1000で割る
+    p1 = p1/1000; 
+    p2 = p2/1000;
+    p3 = p3/1000;
+    p4 = p4/1000;
+
+
+    //小数点丸めこみ
+    p1=Math.round(p1);
+    p2=Math.round(p2);
+    p3=Math.round(p3);
+    p4=Math.round(p4);
+
+
+    //ウマ計算
+    let tori_num =0;
+    if(tori1==1){
+        p1 = p1-yakitori;
+        tori_num = tori_num+1;
+    }
+    if(tori2==1){
+        p2 = p2-yakitori;
+        tori_num = tori_num+1;
+    }
+    if(tori3==1){
+        p3 = p3-yakitori;
+        tori_num = tori_num+1;
+    }
+    if(tori4==1){
+        p4 = p4-yakitori;
+        tori_num = tori_num+1;
+    }
+
+
+    //ここやる
+    //トビ計算。
+    // console.log(p1,p2,p3,p4);
+    let tobi_num=0;
+    if(jibun<0){
+        p1=p1-tobi;
+        tobi_num = tobi_num+1;
+    };
+    if(shimocha<0){
+        p2=p2-tobi;
+        tobi_num = tobi_num+1;
+    };
+    if(toimen<0){
+        p3=p3-tobi;
+        tobi_num = tobi_num+1;
+    };
+    if(kamicha<0){
+        p4=p4-tobi;
+        tobi_num = tobi_num+1;
+    };
+
+    total_check_every = p1 + p2 + p3 + p4;
+    // console.log("合計は0か "+total_check_every);
+
+    //ウマ計算、トリとトビも１位につける
+    //ウマ計算、トリとトビも１位につける
+    // Aさん Aさん Aさん Aさん Aさん Aさん Aさん Aさん Aさん 
+    if(player_1==1){
+        p1 = p1+uma2;//１位のウマ追加
+        p1=p1+tori_num*yakitori;//１位のトリ追加
+        p1=p1+tobi_num*tobi;//１位のトビ追加
+    }
+    else if(player_1==2){
+        p1 = p1+uma1;
+    }
+    else if(player_1==3){
+        p1 = p1-uma1;
+    }
+    else if(player_1==4){
+        p1 = p1-uma2;
+    }
+
+    // Bさん Bさん Bさん Bさん Bさん Bさん Bさん Bさん Bさん
+    if(player_2==1){
+        p2 = p2+uma2;//１位のウマ追加
+        p2=p2+tori_num*yakitori;//１位のトリ追加
+        p2=p2+tobi_num*tobi;//１位のトビ追加
+    }
+    else if(player_2==2){
+        p2 = p2+uma1;
+    }
+    else if(player_2==3){
+        p2 = p2-uma1;
+    }
+    else if(player_2==4){
+        p2 = p2-uma2;
+    }
+
+    // Cさん Cさん Cさん Cさん Cさん Cさん Cさん Cさん Cさん
+    if(player_3==1){
+        p3 = p3+uma2;//１位のウマ追加
+        p3 = p3+tori_num*yakitori;//１位のトリ追加
+        p3 = p3+tobi_num*tobi;//１位のトビ追加
+    }
+    else if(player_3==2){
+        p3 = p3+uma1;
+    }
+    else if(player_3==3){
+        p3 = p3-uma1;
+    }
+    else if(player_3==4){
+        p3 = p3-uma2;
+    }
+    // Dさん Dさん Dさん Dさん Dさん Dさん Dさん Dさん Dさん 
+    if(player_4==1){
+        p4 = p4+uma2;//１位のウマ追加
+        p4 = p4+tori_num*yakitori;//１位のトリ追加
+        p4 = p4+tobi_num*tobi;//１位のトビ追加
+    }
+    else if(player_4==2){
+        p4 = p4+uma1;
+    }
+    else if(player_4==3){
+        p4 = p4-uma1;
+    }
+    else if(player_4==4){
+        p4 = p4-uma2;
+    }
+    total_check_every = p1 + p2 + p3 + p4;
+    // console.log("合計は0か "+total_check_every);
+    
+    //順位と人を付け合わせる
+    //順位と人を付け合わせる
+    //順位と人を付け合わせる
+    let point_a =0;
+    let point_b =0;
+    let point_c =0;
+    let point_d =0;
+
+    //アレイに追加
+    point_1.push(p1);
+    point_2.push(p2);
+    point_3.push(p3);
+    point_4.push(p4);
+
+    // console.log(num,p1,p2,p3,p4);
+    localStorage.setItem(num+"_1",p1);
+    localStorage.setItem(num+"_2",p2);
+    localStorage.setItem(num+"_3",p3);
+    localStorage.setItem(num+"_4",p4);
+
+
+    //合計計算用、アレイを全部足す前の初期化
+  
+
+    //合計計算用、アレイを全部足す
+    // for(let i=0; i<point_1.length; i++){
+    // for(let i=0; i<num; i++){
+    // s1 =s1+point_1[i];
+    // s2 =s2+point_2[i];
+    // s3 =s3+point_3[i];
+    // s4 =s4+point_4[i];
+    // }
+
+    
+
+
+    //表に表示
+    // const html = '<tr><td>'+num+"半荘目"+'</td><td>'+p1+'</td><td>'+p2+'</td><td>'+p3+'</td><td>'+p4+'</td></tr>';
+    // $("#list").append(html);
+
+
+    $("#list").html("");
+    let num11 = 0;
+    let num22 = 0;
+    let num33 = 0;
+    let num44 = 0;
+
+    const name_aa = $("#Asan").val();
+    const name_bb = $("#Bsan").val();
+    const name_cc = $("#Csan").val();
+    const name_dd = $("#Dsan").val();
+    const html2 = '<tr><td>'+"プレイヤー"+'</td><td>'+name_aa+'</td><td>'+name_bb+'</td><td>'+name_cc+'</td><td>'+name_dd+'</td></tr>';
+
+    $("#list").empty();
+    $("#list").append(html2);
+
+    s1=0;
+    s2=0;
+    s3=0;
+    s4=0;
+    let lss1 =0;
+    let lss2 =0;
+    let lss3 =0;
+    let lss4 =0;
+
+    for(let i=1; i<=num; i++){
+        lss1 = localStorage.getItem(i+"_1");
+        lss2 = localStorage.getItem(i+"_2");
+        lss3 = localStorage.getItem(i+"_3");
+        lss4 = localStorage.getItem(i+"_4");
+        const html = '<tr><td>'+(i)+"半荘目"+'</td><td>'+lss1+'</td><td>'+lss2+'</td><td>'+lss3+'</td><td>'+lss4+'</td></tr>';
+        $("#list").append(html);
+
+        s1 = s1 +eval(lss1);
+        s2 = s2 +eval(lss2);
+        s3 = s3 +eval(lss3);
+        s4 = s4 +eval(lss4);
+
+    };
+
+    $("#total_j").html(s1);
+    $("#total_s").html(s2);
+    $("#total_t").html(s3);
+    $("#total_k").html(s4);
+
+
+    //合計チェック。プラマイ0かどうか
+    // total_check_every = p1 + p2 + p3 + p4;
+    // console.log("合計は0か "+total_check_every);
+
+    //マイナスの場合は赤字
+    if(s1<0){
+        $("#total_j").html(s1);
+        $("#total_j").css("color", "red");
+    }
+    else{
+        $("#total_j").html(s1);
+        $("#total_j").css("color", "black");
+
+    }
+    if(s2<0){
+        $("#total_s").html(s2);
+        $("#total_s").css("color", "red");
+    }
+    else{
+        $("#total_s").html(s2);
+        $("#total_s").css("color", "black");
+    }
+    if(s3<0){
+        $("#total_t").html(s3);
+        $("#total_t").css("color", "red");
+    }
+    else{
+        $("#total_t").html(s3);
+        $("#total_t").css("color", "black");
+    }
+    if(s4<0){
+        $("#total_k").html(s4);
+        $("#total_k").css("color", "red");
+    }
+    else{
+        $("#total_k").html(s4);
+        $("#total_k").css("color", "black");
+    }
+});
+
+
+
+//2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント
+//2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント
+//2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント 2.clear クリックイベント
+$("#clear_all").on("click",function(){
+    // localStorage.clear();
+    $("#list").empty();
+    // $("#list_total").empty();
+    s1=0;
+    s2=0;
+    s3=0;
+    s4=0;
+    point_1 = [];
+    point_2 = [];
+    point_3 = [];
+    point_4 = [];
+    // console.log(point_1);
+    $("#total_j").html(s1);
+    $("#total_s").html(s2);
+    $("#total_t").html(s3);
+    $("#total_k").html(s4);
+
+    $("#total_j").css("color", "black");
+    $("#total_s").css("color", "black");
+    $("#total_t").css("color", "black");
+    $("#total_k").css("color", "black");
+
+    const name_aa = $("#Asan").val();
+    const name_bb = $("#Bsan").val();
+    const name_cc = $("#Csan").val();
+    const name_dd = $("#Dsan").val();
+
+
+    const html2 = '<tr><td>'+"プレイヤー"+'</td><td>'+name_aa+'</td><td>'+name_bb+'</td><td>'+name_cc+'</td><td>'+name_dd+'</td></tr>';
+    $("#list").append(html2);
+
+    num = 0;  
+});
+
+// １つ消去 １つ消去 １つ消去 １つ消去 １つ消去 １つ消去
+// １つ消去 １つ消去 １つ消去 １つ消去 １つ消去 １つ消去
+$("#clear_last").on("click",function(){
+    if(num<=0){
+        alert("消すものがありません")
+        return
+    }
+    localStorage.removeItem(num+"_1")
+    localStorage.removeItem(num+"_2")
+    localStorage.removeItem(num+"_3")
+    localStorage.removeItem(num+"_4")
+    $("#list").empty();
+
+    const name_aa = $("#Asan").val();
+    const name_bb = $("#Bsan").val();
+    const name_cc = $("#Csan").val();
+    const name_dd = $("#Dsan").val();
+    const html2 = '<tr><td>'+"プレイヤー"+'</td><td>'+name_aa+'</td><td>'+name_bb+'</td><td>'+name_cc+'</td><td>'+name_dd+'</td></tr>';
+    $("#list").append(html2);
+
+    num = num-1;  
+    
+    console.log(num,"１つ消去");
+    s1 =0;
+    s2 =0;
+    s3 =0;
+    s4 =0;
+
+    let lss1 =0;
+    let lss2 =0;
+    let lss3 =0;
+    let lss4 =0;
+    
+    for(let i=1; i<=num; i++){
+        lss1 = eval(localStorage.getItem(i+"_1"));
+        lss2 = eval(localStorage.getItem(i+"_2"));
+        lss3 = eval(localStorage.getItem(i+"_3"));
+        lss4 = eval(localStorage.getItem(i+"_4"));
+        s1 = s1 +lss1;
+        s2 = s2 +lss2;
+        s3 = s3 +lss3;
+        s4 = s4 +lss4;
+        const html = '<tr><td>'+i+"半荘目"+'</td><td>'+lss1+'</td><td>'+lss2+'</td><td>'+lss3+'</td><td>'+lss4+'</td></tr>';
+        $("#list").append(html);
+
+    }
+
+    $("#total_j").html(s1);
+    $("#total_s").html(s2);
+    $("#total_t").html(s3);
+    $("#total_k").html(s4);
+    
+    if(s1>=0){
+        $("#total_j").css("color", "black");
+    }
+    if(s2>=0){
+        $("#total_s").css("color", "black");
+    }
+    if(s3>=0){
+        $("#total_t").css("color", "black");
+    }
+    if(s4>=0){
+        $("#total_k").css("color", "black");
+    }
+
+    if(s1<0){
+        $("#total_j").css("color", "red");
+    }
+    if(s2<0){
+        $("#total_s").css("color", "red");
+    }
+    if(s3<0){
+        $("#total_t").css("color", "red");
+    }
+    if(s4<0){
+        $("#total_k").css("color", "red");
+    }
+
+});
+
+
+
+
+</script>
+<footer >
+    <small>
+        Copyright © 2020 Koki Kashiwagi All Rights Reserved.
+    </small>
+</footer>
+</body>
+</html>
